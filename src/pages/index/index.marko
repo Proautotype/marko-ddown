@@ -16,12 +16,16 @@ style {
     padding: 10px;
   }
   div.form-group {
+    margin: 15px 0px;
+  }
+  div.form-group > p{
+    font-weight: bold;
   }
 }
 
-<macro|param| name="from-group">
+<!-- <macro|param| name="from-group">
   <div.from-group><p>${param.title}</p><${input.renderBody}/></div>
-</macro>
+</macro> -->
 <html>
   <head>
     <title>Custom-Drop-Down</title>
@@ -30,9 +34,14 @@ style {
     <form>
       <h3>Blue Restaurant Menu</h3>
       <hr>
-       <drop-down/> 
-       <drop-down/> 
-       <drop-down/> 
+       <div.form-group>
+          <p>   Select Breakfast </p>
+          <drop-down/>         
+       </div>
+       <div.form-group>
+          <p>   Select lunch </p>
+          <drop-down/>         
+       </div>
     </form>
   </body>
 </html>
