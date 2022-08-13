@@ -1,0 +1,33 @@
+$ const item = input.item;
+class {
+    handleButtonClick(){        
+        this.emit("power-of-two")
+    }
+}
+
+style {
+    .drop-down-item{
+        background-color: rgb(202, 150, 82);        
+        margin-bottom: 5px;
+    }
+    .drop-down-item:hover{
+        background-color: rgb(114, 68, 9);
+        color: white;
+    }
+    .drop-down-item:active{
+        background-color: rgb(183, 112, 18);        
+        margin-bottom: 5px;
+    }
+    p.item{
+        cursor: pointer;
+        transition: 0.5s;
+        padding: 5px;
+    }
+    
+}
+
+<div.drop-down-item on-click("handleButtonClick")>
+    <p.item>
+        ${input.item}
+    </p>
+</div>

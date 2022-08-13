@@ -1,0 +1,102 @@
+import List from "../../util/menuList.js";
+class {
+    onCreate() {
+        this.state = {
+            menu: List,
+            selectedMenu: List[0]
+        };
+    }
+    poweroftwo(item){
+        const selected = List.filter(value => value === item);
+        this.state.selectedMenu = selected[0];
+        const menuBody = this.getEl("menu-body");
+        menuBody.style.display = "none";
+    }
+    handleMouseOver(){
+        const menuBody = this.getEl("menu-body");
+        menuBody.style.display = "block";
+    }
+    handleMouseLeave(){
+        const menuBody = this.getEl("menu-body");
+        menuBody.style.display = "none";
+    }
+}
+style {
+    .drop-down-container {
+        background-color: antiquewhite;
+        padding: 10px;
+        width: 250px;
+    }
+    .drop-down-container:hover .menu-body{
+        display: block;
+        transition: 1s;
+    }
+    .menu-body{
+        background-color: antiquewhite;
+        margin-top: 10px;
+        max-height: 200px;
+        overflow-y: auto;
+        display: none;
+       
+    }
+    .selected-item{
+        padding: 10px;
+        padding-left: 0px;
+        cursor: text;
+        transition: 0.3s;
+        display: flex;
+        justify-content: space-between;
+    }
+    .selected-item > span{
+        position: relative;        
+    }
+    .selected-item > span::after{
+        position: absolute;
+        content: ' ';
+        top: -5px;
+        width: 7px;
+        height: 7px;
+        background-color: rgb(177, 128, 63);
+        border-radius: 30px;
+    }
+    .selected-item > span::before{
+        position: absolute;
+        content: ' ';
+        bottom: 0px;
+        width: 7px;
+        height: 7px;
+        background-color: rgb(177, 128, 63);
+        border-radius: 30px;
+    }
+}
+
+<macro|param| name="menu-header"><h2>${param.topic}</h2><hr></macro>
+
+<macro name="selected-item">
+   <div.selected-item>
+        <p>
+            ${state.selectedMenu}
+        </p>
+        <span>           
+        </span>
+   </div>
+</macro>
+
+<macro|param| name="menu-body">
+    <div.menu-body key="menu-body">
+        <for|item| of=state.menu>
+            <drop-item item = item on-power-of-two("poweroftwo",item)/>
+        </for>
+    </div>
+</macro>
+
+
+
+<div.drop-down-container 
+    on-mouseover("handleMouseOver")
+    on-mouseout("handleMouseLeave")
+    >
+    <!-- <menu-header topic="Kindrick Lamers Menu"/> -->
+    <selected-item/>
+    <menu-body/>
+</div>
